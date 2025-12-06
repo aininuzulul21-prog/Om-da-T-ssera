@@ -1,0 +1,1027 @@
+﻿﻿﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion & Accessories E-Commerce Micro Site</title>
+    <style>
+        :root {
+            --primary-color: #444; /* Coklat Tua */
+            --secondary-color: #D7CCC8; /* Coklat Muda/Beige */
+            --accent-color: #BCAAA4; /* Abu-abu Coklat */
+            --store-font: 'Brush Script MT', 'Freestyle Script', cursive; /* Simulasi Font Script */
+            --default-font: 'Times New Roman', Times, serif; /* Font default */
+        }
+        body { 
+            font-family: 'Times New Roman', serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f4f4f4;
+            color: rgb(0, 0, 0);  
+        }
+        header h1 { 
+            font-family: 'Freestyle Script', cursive; 
+            font-size: 5em;
+            color: rgb(255, 255, 255);  
+        }
+        header { 
+            background-color: #333; 
+            color: rgb(0, 0, 0); 
+            padding: 10px; 
+            text-align: center; 
+        }
+        nav { 
+            background-color: #444; 
+            padding: 10px; 
+        }
+        nav ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+            display: flex; 
+            justify-content: center; 
+        }
+        nav ul li { 
+            margin: 0 15px; 
+        }
+        nav ul li a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: rgba(117, 117, 117, 0.301);
+            border-radius: 4px;
+        }
+        /* Main Content Container */
+        .container {
+            padding: 20px;
+            min-height: 80vh;
+        }
+        /* Home Page Styling */
+        #home-page {
+            text-align: center;
+        }
+        .hero-section {
+            background: url('Desain tanpa judul.png') no-repeat center center/cover;
+            color: rgb(0, 0, 0);
+            padding: 150px 80px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        .hero-section h1 {
+            font-size: 3em;
+            margin: 0 0 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #333; /* Warna CTA mencolok */
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #333;
+        }
+        /* Product Catalog Styling */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .product-card {
+            background-color: white;
+            border: 1px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .product-card button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        /* Product Detail Styling */
+        .breadcrumb {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .product-detail {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .product-images {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product-images img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .thumbnail-images {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .thumbnail-images img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .thumbnail-images img:hover {
+            border-color: var(--primary-color);
+        }
+        .product-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-info h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 24px;
+        }
+        .product-price {
+            font-size: 28px;
+            color: #FF5722;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .product-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .product-options {
+            margin-bottom: 20px;
+        }
+        .product-options label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .product-options select, .product-options input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .add-to-cart-btn {
+            background-color: #FF5722;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: auto;
+        }
+        .add-to-cart-btn:hover {
+            background-color: #E64A19;
+        }
+        .reviews-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .reviews-section h3 {
+            color: #333;
+        }
+        .review {
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+        .review .reviewer {
+            font-weight: bold;
+        }
+        .review .rating {
+            color: #FFD700;
+        }
+        /* Cart/Checkout Styling */
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--accent-color);
+        }
+        .cart-item-details {
+            display: flex;
+            align-items: center;
+        }
+        .cart-item-details img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+        .checkout-box {
+            background-color: white;
+            border: 1px solid var(--accent-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        /* Form Styling */
+        input[type="text"], input[type="email"], input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button.primary-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button.primary-btn:hover {
+            background-color: #4E342E;
+        }
+        /* Navigation & Footer */
+        .sub-nav {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+        }
+        .sub-nav select, .sub-nav input {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid var(--accent-color);
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        .footer-links a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            transition: text-decoration 0.3s;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        /* Utility/Trust Components */
+        .trust-badges {
+            text-align: center;
+            padding: 15px 0;
+            border-top: 1px solid var(--accent-color);
+            margin-top: 20px;
+        }
+        .trust-badges span {
+            margin: 0 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        /* Tampilan halaman. Hanya 1 yang ditampilkan pada satu waktu. */
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        /* Account Management Section */
+        .account-section {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .account-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .account-tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            color: #666;
+        }
+        .account-tab.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+        .account-form {
+            display: none;
+        }
+        .account-form.active {
+            display: block;
+        }
+        .account-form h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .account-form input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .account-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .account-form button:hover {
+            background-color: #4E342E;
+        }
+        .account-info {
+            text-align: center;
+            padding: 20px;
+        }
+        .account-info p {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .account-info button {
+            background-color: #D32F2F;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .account-info button:hover {
+            background-color: #B71C1C;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Omáda Téssera</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="navigateTo('home')">Home</a></li>
+                <li><a href="#" onclick="navigateTo('catalog')">Catalog</a></li>
+                <li><a href="#" onclick="navigateTo('cart')">Cart (0)</a></li>
+                <li><a href="#" onclick="navigateTo('account')">Account</a></li>
+                <li><a href="#" onclick="navigateTo('about')">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <section id="home" class="page active home-page">
+            <div class="hero-section">
+                <h2>Welcome to Our Fashion Store</h2>
+                <p>Discover the latest trends in fashion and accessories.</p>
+                <a href="#" class="cta-button" onclick="navigateTo('catalog')">Catalog Here!!</a>           
+            </div>
+            <h2 style="text-align: center;">Why choose us? (Trust factor)</h2>
+            <div class="trust-badges" style="border: none;">
+                <span>âœ… 100% Quality Guarantee</span>
+                <span>ðŸšš Fast Delivery Throughout Indonesia</span>
+                <span>ðŸ”’ Secure & Encrypted Payment (SSL Simulation)</span>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="img/Male/Atasan/branded men's court_.jpg" alt="Cardinal Formal Blazer">
+                    <h3>Cardinal Formal Blazer</h3>
+                    <p>Rp 950.000</p>
+                    <button onclick="viewDetail('Cardinal Formal Blazer', 'Fashion Pria', 'Rp 950.000', 'Mens short-sleeve shirt in two contrasting vertical color blocks (beige/tan) with a classic collar.', 'MAKA01', 'img/Male/Atasan/branded men\'s court_.jpg')">Lihat Detail</button>
+                </div>
+                <div class="product-card">
+                    <img src="img/Female/Atasan/1edda0ba-ea63-43f2-9f04-5ab0be59c056.jpeg" alt="Asymmetrical Peplum Striped Shirt">
+                    <h3>Asymmetrical Peplum Striped Shirt</h3>
+                    <p>Rp 220.000</p>
+                    <button onclick="viewDetail('Asymmetrical Peplum Striped Shirt', 'Fashion Wanita', 'Rp 220.000', 'White striped button-down with a flared, high-low, asymmetrical peplum hem.', 'FAKA01', 'img/Female/Atasan/1edda0ba-ea63-43f2-9f04-5ab0be59c056.jpeg')">Lihat Detail</button>
+                </div>
+                <div class="product-card">
+                    <img src="img/Accessories/Cod Topi Distro Topi Pria Topi Baseball Topi Polo Caps Topi Premium -98.jpg" alt="Outdoor Sun Protection Casual Baseball Cap">
+                    <h3>Outdoor Sun Protection Casual Baseball Cap</h3>
+                    <p>Rp 95.000</p>
+                    <button onclick="viewDetail('Outdoor Sun Protection Casual Baseball Cap', 'Accessories', 'Rp 95.000', 'Rok lipit (plisket) bahan moscrepe, panjang semata kaki, fleksibel untuk formal/kasual.', 'AT0001', 'img/Accessories/Cod Topi Distro Topi Pria Topi Baseball Topi Polo Caps Topi Premium -98.jpg')">Lihat Detail</button>
+                </div>
+            </div>
+        </section>
+        <section id="catalog" class="page">
+            <h2>ðŸ›ï¸ Katalog Produk</h2>
+            <div class="sub-nav">
+                <input type="text" id="search-input" placeholder="Cari produk (Kaos, Kemeja, Mukena...)" onkeyup="filterProducts()">
+                <select id="category-filter" onchange="filterProducts()">
+                    <option value="all">Semua Kategori</option>
+                    <optgroup label="Fashion Pria">
+                        <option value="male_atasan">Atasan Pria</option>
+                        <option value="male_bawahan">Bawahan Pria</option>
+                        <option value="male_footwear">Alas Kaki Pria</option>
+                    </optgroup>
+                    <optgroup label="Fashion Wanita">
+                        <option value="female_atasan">Atasan Wanita</option>
+                        <option value="female_bawahan">Bawahan Wanita</option>
+                        <option value="female_footwear">Alas Kaki Wanita</option>
+                    </optgroup>
+                    <option value="religious">Pakaian Religi</option>
+                    <option value="accessories">Aksesoris</option>
+                </select>
+            </div>
+            <div class="product-grid" id="product-list">
+                <!-- Products will be dynamically rendered here -->
+            </div>
+        </section>
+        <section id="detail" class="page">
+            <div class="breadcrumb">
+                <a href="#" onclick="navigateTo('home')">Home</a> > <a href="#" onclick="navigateTo('catalog')">Catalog</a> > <span id="breadcrumb-product"></span>
+            </div>
+            <div class="product-detail">
+                <div class="product-images">
+                    <img id="detail-image" src="" alt="Detail Produk">
+                    <div class="thumbnail-images">
+                        <img id="thumb1" src="" alt="Thumbnail 1" onclick="changeImage(this.src)">
+                        <img id="thumb2" src="" alt="Thumbnail 2" onclick="changeImage(this.src)">
+                        <img id="thumb3" src="" alt="Thumbnail 3" onclick="changeImage(this.src)">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h2 id="detail-title"></h2>
+                    <div class="product-price" id="detail-price"></div>
+                    <div class="product-description" id="detail-description"></div>
+                    <div class="product-options">
+                        <label for="size">Ukuran:</label>
+                        <select id="size">
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                        </select>
+                        <label for="qty">Jumlah:</label>
+                        <input type="number" id="qty" value="1" min="1">
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCartFromDetail()">Tambah ke Keranjang</button>
+                </div>
+            </div>
+            <div class="reviews-section">
+                <h3>Ulasan Pelanggan</h3>
+                <div id="reviews-list">
+                    <div class="review">
+                        <span class="reviewer">Ahmad S.</span> <span class="rating">â˜…â˜…â˜…â˜…â˜…</span>
+                        <p>Produk bagus, sesuai deskripsi. Pengiriman cepat!</p>
+                    </div>
+                    <div class="review">
+                        <span class="reviewer">Siti R.</span> <span class="rating">â˜…â˜…â˜…â˜…â˜†</span>
+                        <p>Warna cantik, tapi ukurannya agak besar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="cart" class="page">
+            <h2>ðŸ›’ Keranjang Belanja Anda</h2>
+            <div id="cart-items-list">
+                <p>Keranjang Anda kosong.</p>
+            </div>         
+            <h3 style="text-align: right;">Total Belanja: <span id="cart-total">Rp 0</span></h3>
+            <button class="cta-button" style="float: right;" onclick="navigateTo('checkout')">Lanjutkan ke Checkout â†’</button>
+            <div style="clear: both;"></div>
+        </section>
+        <section id="checkout" class="page">
+            <h2>ðŸ“¦ Proses Checkout</h2>
+            <div style="display: flex; gap: 30px;">
+                <div style="flex: 2;">
+                    <h3>Informasi Pengiriman</h3>
+                    <form id="checkout-form">
+                        <label for="nama">Nama Lengkap</label>
+                        <input type="text" id="nama" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                        <label for="alamat">Alamat Lengkap</label>
+                        <input type="text" id="alamat" required>
+                        <label for="kota">Kota</label>
+                        <input type="text" id="kota" required>
+                        <label for="kurir">Pilih Kurir</label>
+                        <select id="kurir" required>
+                            <option value="reguler">Reguler (Rp 20.000)</option>
+                            <option value="express">Express (Rp 45.000)</option>
+                        </select>
+                    </form>
+                </div>
+                <div style="flex: 1;" class="checkout-box">
+                    <h3>Ringkasan Pesanan</h3>
+                    <div id="checkout-summary"></div>
+                    <p style="border-top: 1px dashed #ccc; padding-top: 10px;">Subtotal: <span id="summary-subtotal">Rp 0</span></p>
+                    <p>Ongkir: <span id="summary-shipping">Rp 20.000</span></p>
+                    <h4 style="color: #D32F2F;">Grand Total: <span id="summary-grandtotal">Rp 20.000</span></h4>       
+                    <h3 style="margin-top: 20px;">Sistem Pembayaran (Simulasi)</h3>
+                    <p>Pilih Metode Pembayaran:</p>
+                    <select>
+                        <option>Transfer Bank (BCA)</option>
+                        <option>Kartu Kredit/Debit (Simulasi)</option>
+                        <option>E-Wallet (OVO/Gopay)</option>
+                    </select>      
+                    <button class="cta-button" style="width: 100%; margin-top: 15px;" onclick="processOrder()">BAYAR SEKARANG</button>
+                </div>
+            </div>
+        </section>
+        <!-- Account Management Section -->
+        <section id="account" class="page">
+            <div class="account-section">
+                <div class="account-tabs">
+                    <button class="account-tab active" onclick="switchTab('login', this)">Login</button>
+                    <button class="account-tab" onclick="switchTab('register', this)">Register</button>
+                </div>
+                <div id="login-form" class="account-form active">
+                    <h3>Login to Your Account</h3>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </div>
+                <div id="register-form" class="account-form">
+                    <h3>Create New Account</h3>
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit">Register</button>
+                </div>
+                <div id="account-info" class="account-info">
+                    <p>Welcome, User!</p>
+                    <button onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </section>
+        <section id="about" class="page">
+            <h2>â„¹ï¸ Tentang OmÃ¡da TÃ©ssera</h2>
+            <div class="checkout-box">
+                <p>Didirikan pada tahun 2025, OmÃ¡da TÃ©ssera berkomitmen menyediakan fashion dan aksesori berkualitas tinggi dengan sentuhan elegan.</p>
+                <h3>Simulasi Sistem Manajemen Konten (CMS)</h3>
+                <p>Konten ini diibaratkan dikelola dari dashboard CMS, memungkinkan pembaruan mudah tanpa menyentuh kode HTML. Dalam implementasi nyata, bagian ini akan ditarik dari database.</p>        
+                <h3>Simulasi Analitik & Pelaporan</h3>
+                <p>Secara live, kami melacak kinerja toko:</p>
+                <ul>
+                    <li>Penjualan Bulan Ini: Rp 150.000.000</li>
+                    <li>Total Pengunjung: 50.000</li>
+                    <li>Produk Terlaris: Kemeja Batik (Simulasi Laporan Persediaan)</li>
+                </ul>
+                <p style="font-style: italic; color: red;">Fitur analitik real-time memerlukan tools eksternal (Google Analytics, dsb.) dan backend server.</p>
+            </div>
+        </section>    
+    </div>
+    <footer>
+        <div class="footer-links">
+            <a href="#" onclick="alert('Simulasi Kebijakan Privasi')">Kebijakan Privasi</a>
+            <a href="#" onclick="alert('Simulasi Syarat & Ketentuan')">Syarat & Ketentuan</a>
+            <a href="#" onclick="alert('Simulasi Kontak')">Hubungi Kami</a>
+        </div>
+        <p>&copy; 2025 OmÃ¡da TÃ©ssera. Semua Hak Dilindungi. Keamanan SSL Terjamin (Simulasi)</p>
+    </footer>
+    <script>
+        // Data Produk Lengkap
+        const productData = [
+            { id: 'MASR01', name: 'PLAIN GRAY CREWNECK SWEATER', category: 'male_atasan', price: 950000, img: 'img/Male/Atasan/basic sweater flecee_sweater cowok cewek.jpg', desc: `Jenis Item: Sweater Crewneck (Atasan Rajut/Sweatshirt) Pria/Uniseks
+
+Deskripsi: Sweater lengan panjang dengan potongan leher bulat (crewneck) berwarna abu-abu muda polos. Terbuat dari bahan fleece atau sweatshirt yang tebal dan nyaman. Terdapat karet manset di pergelangan tangan dan pinggang. Terdapat label atau patch kecil di bagian dada bawah yang mungkin menunjukkan merek. `},
+            { id: 'MABK01', name: 'MENS LONG SLEEVE BATIK SHIRT', category: 'male_atasan', price: 950000, img: 'img/Male/Atasan/batik.jpg', desc: `Jenis Item: Kemeja Batik Pria Lengan Panjang
+
+Deskripsi: Kemeja formal lengan panjang dengan motif batik tradisional. Warna dominannya adalah cokelat tua, hitam, dan krem, dengan pola yang detail dan rumit, menampilkan bentuk-bentuk menyerupai burung atau motif hewan mitologis lainnya (seperti pola burung Garuda atau Mega Mendung yang terinspirasi dari alam). Kemeja ini memiliki kerah tegak (mandarin collar) dan cocok untuk acara formal atau semi-formal Indonesia. `},
+            { id: 'MAJS01', name: 'MENS BLACK BLAZER', category: 'male_atasan', price: 950000, img: 'img/Male/Atasan/branded men's court_.jpg', desc: `Jenis Item: Blazer/Jas Pria (Single-Breasted Blazer)
+
+Deskripsi: Blazer atau Jas formal pria berwarna hitam polos dengan potongan slim fit yang modern. Jas ini memiliki satu kancing (single-breasted), kerah bertepi standar (notch lapel), dan saku welt (saku datar). Terdapat detail sapu tangan saku (pocket square) berwarna putih di saku dada sebagai aksen. `},
+            { id: 'MAKK01', name: 'COLOR BLOCK SHORT SLEEVE SHIRT', category: 'male_atasan', price: 950000, img: 'img/Male/Atasan/branded men's shirts_.jpg', desc: `Jenis Item: Kemeja Kasual Pria Lengan Pendek
+
+Deskripsi: Kemeja lengan pendek kasual model color block dengan perpaduan dua warna kontras: hitam di satu sisi dan cokelat/khaki di sisi lainnya. Kemeja ini memiliki kerah lipat standar dan deretan kancing di bagian tengah. Terdapat saku tempel berbentuk kotak berwarna hitam di sisi cokelat. `},
+            { id: 'MAKG01', name: 'MENS NAVY BLUE DRESS SHIRT', category: 'male_atasan', price: 950000, img: 'img/Male/Atasan/download (2).jpg', desc: `Jenis Item: Kemeja Kancing Lengan Panjang Pria
+
+Deskripsi: Kemeja lengan panjang berwarna biru tua (navy blue) yang polos dan tampak mengkilap (satinsheen), menunjukkan bahan yang licin. Kemeja ini memiliki kerah lipat klasik dan penutup kancing yang serasi dengan warna kemeja, memberikan kesan formal dan sleek. `},
+            { id: 'MAVT01', name: 'MENS BLACK FORMAL VEST', category: 'male_atasan', price: 950000, img: 'img/Male/Atasan/HOT Prodigo _ Rompi Jas Pria Yapong All Varian I Vest Rompi Formal Pria I Setelan Dalaman Jas Pria.jpg', desc: `Jenis Item: Rompi (Vest) Formal Pria
+
+Deskripsi: Rompi formal pria berwarna hitam polos, dirancang untuk dikenakan sebagai bagian dari setelan jas. Rompi ini memiliki potongan leher V (V-neck), penutup tiga kancing, dan dua saku datar di bagian pinggang. Potongannya fitted dan klasik, cocok untuk acara pernikahan atau formal. `},
+            { id: 'MAKS01', name: 'MENS BLACK MINIMALIST T-SHIRT', category: 'male_atasan', price: 950000, img: 'img/MaleAtasan/Kaos Pria Oversize Hitam - Bahan Cotton Lembut, Lengan Pendek, Desain Minimalis.jpg', desc: `Jenis Item: Kaos Oblong (T-Shirt) Pria
+
+Deskripsi: Kaos lengan pendek berwarna hitam polos dengan potongan reguler atau oversize yang nyaman. Kaos ini memiliki desain minimalis dengan tulisan atau logo kecil berwarna putih di bagian dada ("BREAKSIDE UNLIMITED"). Terdapat label merek kecil di bagian bawah. Kaos ini adalah basic item yang sangat serbaguna untuk gaya kasual. `},
+            { id: 'MBCJ01', name: 'MENS DARK WASH DENIM JEANS', category: 'male_bawahan', price: 150000, img: 'img/Male/Bawahan/Celana Jeans Pria.jpg', desc: `Jenis Item: Celana Jeans Pria (Straight/Slim Fit)
+
+Deskripsi: Celana jeans pria berwarna biru denim gelap (dark wash) dengan jahitan kontras berwarna cokelat. Celana ini memiliki potongan klasik lurus (straight fit) atau sedikit ramping (slim fit). Detailnya meliputi penutup ritsleting/kancing, lima saku (five-pocket style), dan belt loop standar. Ini adalah gaya jeans yang serbaguna untuk tampilan kasual sehari-hari. `},
+            { id: 'MBCB01', name: 'MENS GREY DRESS PANTS', category: 'male_bawahan', price: 150000, img: 'img/Male/Bawahan/Celana.jpg', desc: `Jenis Item: Celana Panjang Formal Pria (Dress Trousers)
+
+Deskripsi: Celana panjang formal pria berwarna abu-abu gelap atau charcoal grey. Celana ini memiliki potongan lurus dan rapi (straight fit) dengan lipatan celana (crease) yang tajam di bagian depan dan belakang. Detailnya minimalis, dengan penutup tersembunyi (concealed closure) dan belt loop halus, cocok untuk acara profesional atau formal. `},
+            { id: 'MBCC01', name: 'HIGH WAISTED CARGO PANTS', category: 'male_bawahan', price: 150000, img: 'img/Male/Bawahan/high waisted cargo pants _ Hollister.jpg', desc: `Jenis Item: Celana Cargo Pria (High-Waisted Wide-Leg)
+
+Deskripsi Tambahan (dari kategori pria): Celana panjang cargo berwarna hijau tentara/army (khaki/olive green) dengan potongan kaki lebar (wide-leg) dan pinggang tinggi (high-waist). Celana ini terbuat dari bahan katun tebal/twill dan ditandai dengan banyak saku: saku saku miring di pinggang, dan dua saku flap besar bertumpuk di sisi paha. Jahitan kontrasnya terlihat jelas, memberikan tampilan yang utilitarian dan modis. `},
+            { id: 'MBCP01', name: 'MENS BLACK FLEECE SHORTS', category: 'male_bawahan', price: 150000, img: 'img/Male/Bawahan/SENATA - Cargo Pendek Pria Hitam.jpg', desc: `Jenis Item: Celana Pendek Cargo Pria (Gaya Sweatshorts)
+
+Deskripsi: Celana pendek pria berwarna hitam yang terbuat dari bahan fleece atau sweatshirt (bahan lembut yang nyaman). Celana ini memiliki tali serut (drawstring) tebal berwarna putih di pinggang dan dua saku tempel besar (cargo pockets) di sisi paha. Terdapat saku di bagian samping pinggang. Gaya celana ini sangat santai (athleisure/casual). `},
+            { id: 'MKSL01', name: 'BOY SANDAL', category: 'male_footwear', price: 150000, img: 'img/Male/Alas kaki/sandal anak laki laki.jpg', desc: `Jenis Item: Sandal Jepit (Flip-Flops) Outdoor Pria/Anak Laki-Laki
+
+Deskripsi: Sepasang sandal jepit dengan desain yang kokoh. Solnya tebal dan bergerigi (lug sole), berwarna abu-abu dan hitam, menunjukkan desain yang dirancang untuk penggunaan outdoor atau aktivitas di luar ruangan. Tali jepitnya berwarna hitam dan terbuat dari bahan tekstil/nilon yang kuat. `},
+            { id: 'MKSJ01', name: 'CONVERSE SHOES', category: 'male_footwear', price: 150000, img: 'img/Male/Alas kaki/Sepatu Converse.jpeg', desc: `Jenis Item: Sepatu Sneakers High-Top (Mirip Converse Chuck Taylor All Star)
+
+Deskripsi: Sepasang sepatu sneakers model high-top (sebatas mata kaki) dengan warna dasar hitam dan sol karet berwarna putih yang tebal. Terdapat tali sepatu berwarna putih dengan lubang tali yang kontras. Lingkaran logo bintang berwarna biru dan putih terlihat jelas di bagian samping pergelangan kaki. `},
+            { id: 'MKSF01', name: 'PATRIOT SHOES', category: 'male_footwear', price: 150000, img: 'img/Male/Alas kaki/Sepatu Patriot.jpeg', desc: `Jenis Item: Sepatu Pantofel / Sepatu Formal Pria (Brogue Shoes)
+
+Deskripsi: Sepasang sepatu pantofel formal pria model brogue (didekorasi dengan lubang-lubang dekoratif/perforasi) berwarna hitam. Sepatu ini memiliki lace-up (tali) dan potongan wingtip klasik. Solnya tipis, dengan lapisan berwarna cokelat muda di tepinya, memberikan kesan formal dan klasik. `},
+            { id: 'MKSO01', name: 'REEBOK SHOES', category: 'male_footwear', price: 150000, img: 'img/Male/Alas kaki/Sepatu Reebok.jpeg', desc: `Jenis Item: Sepatu Sneakers Olahraga / Lari (Training/Running Shoes)
+
+Deskripsi: Sepasang sepatu sneakers untuk olahraga dengan desain modern dan futuristik. Warna utamanya adalah hitam dan putih, dengan aksen jaring (mesh) berwarna oranye terang/coral. Solnya tebal, terutama di bagian belakang, berwarna abu-abu gelap dan hitam, dirancang untuk performa olahraga dengan bantalan yang terlihat baik. Logo merek (Reebok) terlihat di sisi samping. `},
+            { id: 'FASR01', name: 'EMBROIDERED COLLAR SWEATER', category: 'female_atasan', price: 220000, img: 'img/Female/Atasan/1edda0ba-ea63-43f2-9f04-5ab0be59c056.jpeg', desc: `Jenis Item: Sweater Lengan Panjang
+
+Deskripsi: Sweater atau baju rajut lengan panjang berwarna merah muda pucat (dusty pink). Sweater ini memiliki tekstur lembut. Bagian yang menonjol adalah kerah besar yang menempel dengan ujung runcing (peter pan collar). Kerah tersebut dihiasi dengan bordir bunga-bunga kecil (mawar) berwarna merah muda dan hijau di kedua sisinya. `},
+            { id: 'FABK01', name: 'BATIK SHIRT', category: 'female_atasan', price: 220000, img: 'img/Female/Atasan/3f5f6db0-b942-49bc-b748-3de5767931b5.jpeg', desc: `Jenis Item: Gaun Mini / Mini Dress
+
+Deskripsi: Gaun mini lengan panjang dengan potongan tinggi di leher (stand collar) dan rok A-line. Warna dominan adalah merah bata/oranye kemerahan dengan pola bunga dan sulur-sulur putih gading/krem (paisley-like print). Lengan gaun ini berbentuk balon (puffy sleeve) dengan manset berkancing. Terdapat deretan kancing penuh di bagian depan (yang berfungsi sebagai bukaan) dan ikat pinggang dari bahan yang serasi dengan pola pinggiran yang kontras. `},
+            { id: 'FAKA01', name: 'PINSTRIPE CINCHED SHIRT', category: 'female_atasan', price: 220000, img: 'img/Female/Atasan/7ca3e69a-4cb4-46ae-b4ab-ba2572b1ccd6.jpeg', desc: `Jenis Item: Kemeja Lengan Panjang
+
+Deskripsi: Kemeja lengan panjang berwarna merah muda dengan pola garis-garis vertikal putih (pinstripe). Kemeja ini memiliki kerah bertepi klasik. Potongan kemeja ini sangat unik karena meruncing di bagian pinggang (corset-style fit) dengan detail lipatan (pleats) yang dijahit, sehingga memberikan efek pinggang yang ketat dan bagian bawah yang sedikit mengembang (peplum). `},
+            { id: 'FAKS01', name: 'GRAPHIC T-SHIRT', category: 'female_atasan', price: 220000, img: 'img/Female/Atasan/89a556e1-9fb9-473e-a06f-119a1476e392.jpeg', desc: `Jenis Item: Kaos Oblong (T-Shirt) Oversized
+
+Deskripsi: Kaos lengan pendek berpotongan longgar (oversized) berwarna krem muda (off-white). Kaos ini memiliki gambar grafis bertema gurun atau padang pasir. Desain tengahnya menampilkan pemandangan gunung, kaktus (seperti Joshua Tree), dan matahari terbenam dengan warna merah muda, biru pucat, dan oranye. Teks di sekitarnya bertuliskan "CALIFORNIA JOSHUA TREE" dan dibingkai dengan ornamen dekoratif. `},
+            { id: 'FADS01', name: 'FLORAL WRAP MAXI DRESS', category: 'female_atasan', price: 220000, img: 'img/Female/Atasan/696d308e-cb75-4678-b2a1-3fa73fab8d1e.jpeg', desc: `Jenis Item: Gaun Maxi (Wrap Dress)
+
+Deskripsi: Gaun panjang (maxi dress) model bungkus (wrap dress) dengan leher V (V-neck) dan lengan pendek berumbai (flutter sleeves). Bahan gaun berwarna dasar biru kehijauan muda (dusty teal) dengan motif bunga kecil-kecil berwarna putih dan ungu muda yang tersebar di seluruh permukaan. Gaun ini memiliki tali ikat di pinggang dan belahan tinggi yang terbentuk dari potongan wrap. `},
+            { id: 'FAVT01', name: 'WHITE BUTTON UP VEST', category: 'female_atasan', price: 220000, img: 'img/Female/Atasan/49471baa-b7ce-45e2-98da-59cd00eb794c.jpeg', desc: `Jenis Item: Rompi (Vest) Wanita
+
+Deskripsi: Rompi tanpa lengan berwarna putih gading (off-white) dengan potongan leher V (V-neck). Rompi ini memiliki penutup kancing tunggal di bagian depan dengan kancing berwarna cokelat menyerupai cangkang kura-kura. Terdapat saku palsu (welt pocket) di bagian pinggang. Rompi ini berpotongan pas badan (fitted) dan dirancang untuk dikenakan sebagai atasan atau sebagai bagian dari setelan yang lebih formal. `},
+            { id: 'FABR01', name: 'SEQUINED TWEED CROPPED JACKET', category: 'female_atasan', price: 220000, img: 'img/Female/Atasan/e125b414-a98a-4286-8fd8-781dd7773d5d.jpeg', desc: `Jenis Item: Jaket Pendek (Cropped Jacket)
+
+Deskripsi: Jaket pendek (cropped) berlengan panjang dengan bahan tweed berwarna biru muda (baby blue). Jaket ini memiliki desain asimetris dengan penutup samping dan dihiasi dengan payet atau sequin yang berkilauan. Bagian kerah, tepi bukaan, dan ujung lengan dihiasi dengan tali kepang atau braided trim berwarna perak/putih yang juga dihiasi berlian imitasi atau rhinestone. `},
+            { id: 'FBCB01', name: 'FLOWY PLEATED PALAZZO PANTS', category: 'female_bawahan', price: 150000, img: 'img/Female/Bawahan/bea0918b-1cb5-4a91-8b2f-49ba82732641.jpeg', desc: `Jenis Item: Celana Panjang Wanita (High-Waist Wide-Leg Trousers)
+
+Deskripsi: Celana panjang wanita berpotongan pinggang tinggi (high-waist) dengan model kaki lebar (wide-leg) dan panjang hingga lantai. Warna celana adalah biru muda keabu-abuan (dusty blue). Celana ini memiliki detail lipatan ganda (double pleats) di bagian depan yang memberikan volume dan jatuh yang elegan. Penutup celana berupa kancing dan ritsleting tersembunyi, cocok untuk tampilan profesional atau smart casual. `},
+            { id: 'FBRK01', name: 'A-LINE CHECK SKIRT WITH GOLD BUTTONS', category: 'female_bawahan', price: 150000, img: 'img/Female/Bawahan/be16c7c5-b27b-4060-bc77-4b3f5eaee29c.jpeg', desc: `Jenis Item: Rok Midi (A-Line Pleated Skirt)
+
+Deskripsi: Rok midi wanita berpotongan pinggang tinggi (high-waist) dengan model A-line yang mengembang ke bawah dan memiliki detail lipatan (pleats) di bagian pinggang. Rok ini memiliki motif kotak-kotak (plaid) yang halus dengan kombinasi warna krem dan cokelat muda. Rok ini memiliki penutup kancing di bagian tengah depan dari atas ke bawah, dengan kancing berwarna emas yang berfungsi sebagai aksen dekoratif. Panjangnya adalah midi (di bawah lutut), cocok untuk gaya feminin dan klasik. `},
+            { id: 'FBCJ01', name: 'WIDE-LEG DENIM TROUSERS', category: 'female_bawahan', price: 150000, img: 'img/Female/Bawahan/a819f151-5bb4-454a-aab8-29adb3d9cdb3.jpeg', desc: `Jenis Item: Celana Jeans (Wide-Leg Jeans)
+
+Deskripsi: Celana jeans berpotongan pinggang tinggi (high-waist) dengan model kaki lebar (wide-leg) dan panjang penuh. Warna jeans adalah biru denim sedang dengan jahitan kontras berwarna ochre atau kuning kecokelatan. Potongan pinggangnya klasik dengan fly kancing dan kantong saku di depan dan belakang. Jeans ini memberikan tampilan yang santai namun tetap stylish. `},
+            { id: 'FBCP01', name: 'TAILORED PLEATED BELTED SHORTS', category: 'female_bawahan', price: 150000, img: 'img/Female/Bawahan/140f14f8-9a32-48ad-9f25-e8df0ace3d70.jpeg', desc: `Jenis Item: Celana Pendek Wanita (High-Waist Shorts)
+
+Deskripsi: Celana pendek wanita berpotongan pinggang tinggi (high-waist) dengan warna cokelat tua atau khaki. Celana ini memiliki detail lipatan (pleats) di bagian depan. Di bagian pinggang, terdapat sabuk dari bahan yang sama yang diikat dengan gesper logam berwarna emas yang menonjol. Celana ini memiliki potongan lebar (flowy), memberikan siluet yang rapi dan terstruktur, cocok untuk gaya formal atau semi-kasual. `},
+            { id: 'FKSO01', name: 'NIKE AIR ZOOM SPIRIDON CAGE 2', category: 'female_footwear', price: 150000, img: 'img/Female/Alas kaki/download (2).jpg', desc: `Jenis Item: Sepatu Olahraga / Sneakers
+
+Deskripsi: Sepasang sepatu olahraga/lari (sneakers) dengan warna dominan merah muda pucat atau dusty pink. Sepatu ini memiliki desain yang tebal (chunky) khas sepatu lari, dengan panel-panel bahan mesh dan sintetis. Terdapat tanda swoosh (logo) berwarna putih di sisi samping. Bagian solnya tebal, berwarna putih, dengan aksen hitam di ujung depan dan belakang. Sepatu ini terlihat seperti model chunky runner yang fokus pada kenyamanan dan gaya. `},
+            { id: 'FKSL01', name: 'SANDAL SPERRY', category: 'female_footwear', price: 150000, img: 'img/Female/Alas kaki/Sendal Sperry.jpeg', desc: `Jenis Item: Sandal Selop / Sandal Jepit Wanita (Slide Sandals)
+
+Deskripsi: Sepasang sandal selop/jepit wanita berwarna putih polos dengan sol datar. Bagian tali atasnya lebar dan dihiasi dengan pola tenunan atau anyaman. Terdapat ornamen rantai emas yang besar dan menonjol di bagian tengah tali, memberikan sentuhan yang elegan. Sandal ini memiliki ujung kotak (square toe) dan umumnya digunakan untuk tampilan kasual yang santai namun chic. `},
+            { id: 'FKSF01', name: 'HIGH HEELS VIVIANE', category: 'female_footwear', price: 150000, img: 'img/Female/Alas kaki/Ñ‚ÑƒÑ„Ð»Ð¸.jpg', desc: `Jenis Item: Sepatu Hak Tinggi / Stiletto Heels (Model Slingback)
+
+Deskripsi: Sepasang sepatu hak tinggi wanita model slingback (bertali di belakang pergelangan kaki) berwarna putih gading atau off-white. Sepatu ini memiliki ujung yang runcing (pointy toe) dan hak stiletto yang ramping dengan ketinggian sedang hingga tinggi. Tali slingback-nya tipis dan memiliki gesper kecil. Sepatu ini memberikan tampilan yang formal, profesional, atau elegan, cocok untuk acara resmi atau kantor. `},
+            { id: 'RSG001', name: 'SARUNG BSH COSMO', category: 'religious', price: 220000, img: 'img/Religion/Sarung BHS Cosmo Hitam Polos _ jakarta, bandung, semarang, yogyakarta, surabaya, malang, kediri,.jpg', desc: `Jenis Item: Sarung Pria.
+
+Deskripsi: Sarung ini didominasi warna hitam pekat dengan motif tenun atau songket berwarna putih keperakan yang terletak secara vertikal. Motif tersebut menonjolkan bentuk geometris seperti berlian (diamond) besar di bagian tengah dan pola bunga atau sulur yang berulang. Di bagian bawah sarung, terdapat label bertuliskan BHS COSMO. Sarung ini dikenakan oleh seorang pria, dipadukan dengan kaus putih polos dan sandal hitam. `},
+            { id: 'RMA001', name: 'MUKENA TRAVEL ALIYAH', category: 'religious', price: 150000, img: 'img/Religion/Mukena Travel Aliyah Mukena Travel Wanita 2in1 Katun Outlet Shopee.jpg', desc: `Jenis Item: Mukena Travel Wanita.
+
+Deskripsi: Mukena (pakaian salat wanita) berwarna abu-abu polos. Modelnya adalah mukena travel yang ringkas, seringkali dapat diubah menjadi model 2in1 (ada resleting di dagu). Bagian atasan dan bawahan berwarna senada. Terdapat aksen renda kecil berwarna putih atau krem di sekeliling tepi mukena, termasuk bagian wajah dan ujung rukuh. Mukena ini juga dilengkapi dengan tas kecil serut dari bahan yang sama, yang memudahkan untuk dibawa bepergian. `},
+            { id: 'RSH001', name: 'MUSLIM PRAYER RUG', category: 'religious', price: 220000, img: 'img/Religion/Faxianther Portable Muslim Prayer Rug, Sajadah For Islam Carpet Blue.jpg', desc: `Jenis Item: Sajadah (Alas Salat).
+
+Deskripsi: Sajadah ini memiliki warna dasar biru tua (navy) yang kaya. Sajadah ini dihiasi motif bunga-bunga besar berwarna merah muda pucat dan putih, disusun membentuk oval besar di bagian tengah, menyerupai mihrab. Tepian sajadah memiliki bingkai motif hiasan dan diakhiri dengan rumbai-rumbai (umbai) berwarna krem atau putih di kedua ujungnya. Desainnya terlihat klasik dan mewah, sering disebut sajadah jenis Turki atau Persia. `},
+            { id: 'RPI001', name: 'KOPIAH TEROMPAH', category: 'religious', price: 150000, img: 'img/Religion/EXCLUSIVE !!! Peci Songkok Kopiah Terompah Malaysia Motif Embos Logo Bordir Tinggi 10cm - Peci Haji Malaysia Berkualitas Fashion Muslim Keren Bisa Bayar Di Tempat COD !!!.jpg', desc: `Jenis Item: Peci/Songkok/Kopiah.
+
+Deskripsi: Koleksi tiga peci dengan model bulat, kemungkinan Peci Malaysia atau Peci Haji, yang memiliki tinggi sekitar 10 cm. Peci ini tersedia dalam tiga warna: putih polos, abu-abu, dan hitam. Peci yang berwarna abu-abu dan hitam memiliki motif geometris yang di-emboss (timbul) di seluruh permukaannya. Setiap peci memiliki emblem bordir kecil di bagian depan yang berbentuk mahkota atau perisai berwarna emas, yang di dalamnya terdapat tulisan Arab, kemungkinan merek atau slogan. `},
+            { id: 'ATC001', name: 'BASEBALL CAP', category: 'accessories', price: 150000, img: 'img/Accessories/Cod Topi Distro Topi Pria Topi Baseball Topi Polo Caps Topi Premium -98.jpg', desc: `Jenis Item: Topi baseball (topi polo).
+
+Deskripsi: Topi baseball klasik berwarna hitam dengan visor melengkung. Terdapat bordir logo kecil berupa figur penunggang kuda sedang bermain polo, berwarna krem atau emas kecoklatan, di bagian depan. }
+            { id: 'ATS001', name: 'BAGSMART DAYPACK', category: 'accessories', price: 150000, img: 'img/Accessories/bagsmart daypack.jpg', desc: `Jenis Item: Ransel/tas punggung harian (daypack).
+
+Deskripsi: Ransel kecil hingga sedang dengan desain minimalis, berwarna merah muda pucat (soft pink). Tas ini terbuat dari bahan nilon atau sejenisnya yang terlihat ringan dan mengkilap. Memiliki beberapa kompartemen dengan resleting, dan merupakan pilihan yang cocok untuk penggunaan sehari-hari atau bepergian ringan. }
+            { id: 'ABT001', name: 'CRYSTAL EMBRACE BRACELET', category: 'accessories', price: 150000, img: 'img/Accessories/Crystal Embrace Bracelet.jpg', desc: `Jenis Item: Gelang Bangle (Bangle Bracelet).
+
+Deskripsi: Gelang berwarna perak ini memiliki desain elegan. Bagian depan dihiasi kristal bening dalam bentuk gugusan daun atau bunga, memberikan kesan berkilau dan mewah. Gelang ini memiliki rantai ekstensi di bagian belakang dengan pengait, yang dihiasi dengan logo angsa, kemungkinan dari merek Swarovski. }
+            { id: 'ACR001', name: 'EIGER ECOSAVIOR 45 CARRIER', category: 'accessories', price: 150000, img: 'img/Accessories/EIGER ECOSAVIOR 45 CARRIER OLIVE.jpg', desc: `Jenis Item: Tas carrier/ransel gunung.
+
+Deskripsi: Ransel carrier berkapasitas besar (sekitar 45 liter) untuk kegiatan hiking atau trekking. Tas ini berwarna abu-abu gelap dan hijau olive gelap. Memiliki banyak tali pengikat dan kompresi untuk kestabilan, serta sistem punggung yang ergonomis. Terdapat logo merek Eiger di bagian atas. }
+            { id: 'AKG001', name: 'RIBBON NECKLACE', category: 'accessories', price: 150000, img: 'img/Accessories/Glimmering Tie.jpg', desc: `Jenis Item: Kalung liontin.
+
+Deskripsi: Kalung berantai tipis berwarna perak dengan liontin berbentuk dasi kupu-kupu (bow tie). Liontin tersebut dihiasi kristal bening kecil yang berkilau di bagian simpulnya, sementara bagian pita yang menjuntai memiliki permukaan logam halus. }
+            { id: 'ASG001', name: 'MIU MIU PINK SUNGLASSES', category: 'accessories', price: 150000, img: 'img/Accessories/miu miu pink glasses_.webp', desc: `Jenis Item: Kacamata hitam atau kacamata fashion.
+
+Deskripsi: Kacamata berdesain ramping, berbentuk oval kecil, dan rimless (tanpa bingkai penuh). Lensa berwarna merah muda gradasi yang lembut. Tangkai kacamata berwarna emas dengan pola tortoiseshell (kulit penyu) pada ujungnya dan detail logo Miu Miu yang kecil di bagian atas salah satu lensa. }
+            { id: 'ASG002', name: 'CYCLING SUNGLASSES', category: 'accessories', price: 150000, img: 'img/Accessories/New Outdoor Night Riding Cycling Sunglasses For Men And Women Goggles Sports Road Bicycle Large Frame Windproof Eye Protection Transparent Bike Shades Sunglasses UV400.jpg', desc: `Jenis Item: Kacamata olahraga/sepeda.
+
+Deskripsi: Kacamata olahraga dengan bingkai besar, bentuk wrap-around (melengkung menutupi mata) berwarna hitam. Lensa memiliki lapisan cermin (mirrored) dengan warna biru keunguan yang mencolok. Desainnya kokoh dan futuristic, dirancang untuk melindungi mata dari angin dan sinar matahari, serta ideal untuk bersepeda atau aktivitas luar ruangan lainnya. }
+            { id: 'ABH001', name: 'BUCKET HAT', category: 'accessories', price: 150000, img: 'img/Accessories/promo âœ¨ -Topi Pria Bucket Hat Rimba Topi Pria nita Outdoor Topi Rimba Gunung - Khaki _ Krem.jpg', desc: `Jenis Item: Topi bucket atau topi rimba.
+
+Deskripsi: Topi bucket berwarna cokelat khaki atau krem dengan pinggiran yang lebar dan tali dagu yang dapat disesuaikan. Desainnya ditujukan untuk aktivitas luar ruangan, seperti mendaki gunung atau menjelajah, memberikan perlindungan dari sinar matahari. Terdapat label merek kecil berwarna gelap di bagian depan. }
+        ];
+        // Keranjang Belanja Global (Data in-memory, hilang setelah refresh)
+        let cartItems = [];
+        // Inisialisasi: Menampilkan semua produk saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProductCatalog(productData);
+            updateCartIcon();
+        });
+        // 1. FUNGSI NAVIGASI
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active'); 
+            // Khusus Cart/Checkout: Render ulang konten
+            if (pageId === 'cart') {
+                renderCart();
+            } else if (pageId === 'checkout') {
+                renderCheckoutSummary();
+            }
+            window.scrollTo(0, 0); // Gulir ke atas
+        }
+        // 2. FUNGSI KATALOG & FILTER
+        function renderProductCatalog(products) {
+            const list = document.getElementById('product-list');
+            list.innerHTML = '';
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-id', product.id);
+                card.setAttribute('data-category', product.category);
+                card.setAttribute('data-name', product.name);       
+                card.innerHTML = `
+                    <img src="${product.img}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>Rp ${product.price.toLocaleString('id-ID')}</p>
+                    <button onclick="viewDetail('${product.name.replace(/'/g, "\\'")}', '${product.category}', 'Rp ${product.price.toLocaleString('id-ID')}', '${product.id}', '${product.img.replace(/'/g, "\\'")}')">Lihat Detail</button>
+                    <button style="background-color: #FF5722; margin-left: 5px;" onclick="addToCart({id: '${product.id}', name: '${product.name.replace(/'/g, "\\'")}', price: ${product.price}, img: '${product.img.replace(/'/g, "\\'")}'})">Tambah ke Cart</button>
+                `;
+                list.appendChild(card);
+            });
+        }
+        function filterProducts() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const categoryFilter = document.getElementById('category-filter').value;
+            const filteredProducts = productData.filter(product => {
+                const nameMatch = product.name.toLowerCase().includes(searchTerm);
+                const categoryMatch = categoryFilter === 'all' || product.category === categoryFilter;
+                return nameMatch && categoryMatch;
+            });
+            renderProductCatalog(filteredProducts);
+        }
+        // 3. FUNGSI DETAIL PRODUK
+        function viewDetail(name, category, price, description, id, img) {
+            document.getElementById('detail-title').innerText = name;
+            document.getElementById('breadcrumb-product').innerText = name;
+            document.getElementById('detail-price').innerText = price;
+            document.getElementById('detail-description').innerText = description;
+            document.getElementById('detail-image').src = encodeURI(img);
+            document.getElementById('detail-image').alt = name;
+            // Set thumbnails (for now, use the same image)
+            document.getElementById('thumb1').src = encodeURI(img);
+            document.getElementById('thumb2').src = encodeURI(img);
+            document.getElementById('thumb3').src = encodeURI(img);
+            // Simpan ID produk yang sedang dilihat untuk fungsi AddToCartFromDetail
+            document.getElementById('detail').setAttribute('data-current-product-id', id);
+            navigateTo('detail');
+        }
+        function changeImage(src) {
+            document.getElementById('detail-image').src = src;
+        }
+        // 4. FUNGSI KERANJANG BELANJA (Add, Remove, Edit)
+        function updateCartIcon() {
+            const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            document.querySelector('nav ul li a[onclick="navigateTo(\'cart\')"]').innerText = `Cart (${totalItems})`;
+        }
+        function addToCart(product, size = 'M', quantity = 1) {
+            const existingItem = cartItems.find(item => item.id === product.id && item.size === size);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cartItems.push({
+                    ...product,
+                    size: size,
+                    quantity: quantity
+                });
+            }
+            updateCartIcon();
+            alert(`${product.name} (Ukuran: ${size}, Qty: ${quantity}) berhasil ditambahkan ke keranjang!`);
+            renderCart(); // Render ulang jika berada di halaman cart
+        }
+        function addToCartFromDetail() {
+            const productId = document.getElementById('detail').getAttribute('data-current-product-id');
+            const size = document.getElementById('size').value;
+            const qty = parseInt(document.getElementById('qty').value);
+            const product = productData.find(p => p.id === productId);
+            if (product && qty > 0) {
+                addToCart(product, size, qty);
+            } else {
+                alert('Pilih jumlah yang valid!');
+            }
+        }
+        function removeItem(index) {
+            const productName = cartItems[index].name;
+            cartItems.splice(index, 1);
+            updateCartIcon();
+            alert(`${productName} berhasil dihapus dari keranjang.`);
+            renderCart();
+        }
+        function editQuantity(index, newQty) {
+            const qty = parseInt(newQty);
+            if (qty > 0) {
+                cartItems[index].quantity = qty;
+                renderCart();
+            } else if (qty === 0) {
+                removeItem(index);
+            }
+        }
+        function renderCart() {
+            const list = document.getElementById('cart-items-list');
+            list.innerHTML = '';
+            let total = 0;
+            if (cartItems.length === 0) {
+                list.innerHTML = '<p>Keranjang Anda kosong.</p>';
+            } else {
+                cartItems.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'cart-item';
+                    itemDiv.innerHTML = `
+                        <div class="cart-item-details">
+                            <img src="${item.img}" alt="${item.name}">
+                            <div>
+                                <strong>${item.name}</strong> (${item.size})
+                                <p style="margin: 0;">Harga: Rp ${item.price.toLocaleString('id-ID')}</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <label>Qty:</label>
+                            <input type="number" value="${item.quantity}" min="1" style="width: 60px; padding: 5px; margin: 0;" onchange="editQuantity(${index}, this.value)">
+                            <p>Subtotal: <strong>Rp ${itemTotal.toLocaleString('id-ID')}</strong></p>
+                            <button class="primary-btn" style="background-color: #D32F2F;" onclick="removeItem(${index})">Hapus</button>
+                        </div>
+                    `;
+                    list.appendChild(itemDiv);
+                });
+            }
+            document.getElementById('cart-total').innerText = `Rp ${total.toLocaleString('id-ID')}`;
+            updateCartIcon();
+        }
+        // 5. FUNGSI CHECKOUT
+        function renderCheckoutSummary() {
+            const summary = document.getElementById('checkout-summary');
+            let subtotal = 0;
+            summary.innerHTML = cartItems.map(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                return `<p>${item.name} (${item.quantity}x) - Rp ${itemTotal.toLocaleString('id-ID')}</p>`;
+            }).join('');
+            if (cartItems.length === 0) {
+                summary.innerHTML = `<p style="color: red;">Keranjang kosong, tidak bisa checkout.</p>`;
+                document.querySelector('#checkout .cta-button').disabled = true;
+            } else {
+                document.querySelector('#checkout .cta-button').disabled = false;
+            }
+            // Simulasi Ongkir
+            const shippingCost = 20000; 
+            const grandTotal = subtotal + shippingCost;
+            document.getElementById('summary-subtotal').innerText = `Rp ${subtotal.toLocaleString('id-ID')}`;
+            document.getElementById('summary-shipping').innerText = `Rp ${shippingCost.toLocaleString('id-ID')}`;
+            document.getElementById('summary-grandtotal').innerText = `Rp ${grandTotal.toLocaleString('id-ID')}`;
+        }
+        function processOrder() {
+            if (cartItems.length === 0) {
+                alert('Tidak ada item di keranjang!');
+                return;
+            }
+            const form = document.getElementById('checkout-form');
+            if (form.checkValidity()) {
+                const grandTotal = document.getElementById('summary-grandtotal').innerText;
+                alert(`Pesanan telah diproses!\nTotal yang harus dibayar: ${grandTotal}\n\n[SIMULASI] Data pesanan ini seharusnya dikirim ke backend server untuk diproses dan disimpan di database (Manajemen Pesanan, Persediaan, Akun, Pembayaran).`);
+                // Kosongkan keranjang setelah simulasi
+                cartItems = [];
+                updateCartIcon();
+                navigateTo('home');
+            } else {
+                alert('Mohon lengkapi semua data pengiriman.');
+            }
+        }
+        // 6. FUNGSI ACCOUNT MANAGEMENT
+        function switchTab(tab, element) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.account-tab').forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked tab
+            element.classList.add('active');
+            // Hide all forms
+            document.querySelectorAll('.account-form').forEach(form => form.classList.remove('active'));
+            // Show selected form
+            document.getElementById(tab + '-form').classList.add('active');
+        }
+        function login() {
+            const email = document.querySelector('#login-form input[type="email"]').value;
+            const password = document.querySelector('#login-form input[type="password"]').value;
+            if (email && password) {
+                // Simulasi login berhasil
+                alert('Login berhasil! Selamat datang kembali.');
+                showAccountInfo(email);
+            } else {
+                alert('Mohon lengkapi email dan password.');
+            }
+        }
+        function register() {
+            const name = document.querySelector('#register-form input[type="text"]').value;
+            const email = document.querySelector('#register-form input[type="email"]').value;
+            const password = document.querySelector('#register-form input[type="password"]').value;
+            if (name && email && password) {
+                // Simulasi registrasi berhasil
+                alert('Registrasi berhasil! Silakan login dengan akun baru Anda.');
+                switchTab('login');
+            } else {
+                alert('Mohon lengkapi semua field.');
+            }
+        }
+        function showAccountInfo(email) {
+            document.querySelectorAll('.account-form').forEach(form => form.classList.remove('active'));
+            document.getElementById('account-info').classList.add('active');
+            document.querySelector('#account-info p').innerText = `Welcome, ${email}!`;
+        }
+        function logout() {
+            alert('Anda telah logout.');
+            document.getElementById('account-info').classList.remove('active');
+            document.getElementById('login-form').classList.add('active');
+            document.querySelector('.account-tab[onclick="switchTab(\'login\')"]').classList.add('active');
+            document.querySelector('.account-tab[onclick="switchTab(\'register\')"]').classList.remove('active');
+        }
+        // Add event listeners for forms
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProductCatalog(productData);
+            updateCartIcon();
+            // Account form listeners
+            document.getElementById('login-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                login();
+            });
+            document.getElementById('register-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                register();
+            });
+        });
+    </script>
+</body>
+</html>
+
